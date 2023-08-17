@@ -490,7 +490,7 @@ class SubstrateTab(object):
         # print("substrates: update_params(): self.substrates_flag = ",self.substrates_flag)
         self.svg_delta_t = config_tab.svg_interval.value
         self.substrate_delta_t = config_tab.mcds_interval.value
-        self.modulo = int(self.substrate_delta_t / self.svg_delta_t)
+        self.modulo = int(float(self.substrate_delta_t / self.svg_delta_t))
         # print("substrates: update_params(): modulo=",self.modulo)        
 
         if self.customized_output_freq:
@@ -517,8 +517,8 @@ class SubstrateTab(object):
             if full_xml_filename.is_file():
                 tree = ET.parse(full_xml_filename)  # this file cannot be overwritten; part of tool distro
                 xml_root = tree.getroot()
-                self.svg_delta_t = int(xml_root.find(".//SVG//interval").text)
-                self.substrate_delta_t = int(xml_root.find(".//full_data//interval").text)
+                self.svg_delta_t = int(float(xml_root.find(".//SVG//interval").text))
+                self.substrate_delta_t = int(float(xml_root.find(".//full_data//interval").text))
                 # print("substrates: svg,substrate delta_t values=",self.svg_delta_t,self.substrate_delta_t)        
                 self.modulo = int(self.substrate_delta_t / self.svg_delta_t)
                 # print("substrates: update(): modulo=",self.modulo)        
@@ -526,12 +526,12 @@ class SubstrateTab(object):
         all_files = sorted(glob.glob(os.path.join(self.output_dir, 'snap*.svg')))   # if .svg
         if len(all_files) > 0:
             last_file = all_files[-1]
-            self.max_frames.value = int(last_file[-12:-4])  # assumes naming scheme: "snapshot%08d.svg"
+            self.max_frames.value = int(float(last_file[-12:-4])  # assumes naming scheme: "snapshot%08d.svg"
         else:
             substrate_files = sorted(glob.glob(os.path.join(self.output_dir, 'output*.xml')))
             if len(substrate_files) > 0:
                 last_file = substrate_files[-1]
-                self.max_frames.value = int(last_file[-12:-4])
+                self.max_frames.value = int(float(last_file[-12:-4]))
 
     def download_svg_cb(self):
         file_str = os.path.join(self.output_dir, '*.svg')
@@ -685,7 +685,7 @@ class SubstrateTab(object):
                 # remove the ".00" on minutes
                 self.title_str += "   cells: " + svals[2] + "d, " + svals[4] + "h, " + svals[7][:-3] + "m"
 
-                # self.cell_time_mins = int(svals[2])*1440 + int(svals[4])*60 + int(svals[7][:-3])
+                # self.cell_time_mins = int(float(svals[2])*1440 + int(svals[4])*60 + int(svals[7][:-3])
                 # self.title_str += "   cells: " + str(self.cell_time_mins) + "m"   # rwh
 
             # print("width ",child.attrib['width'])
