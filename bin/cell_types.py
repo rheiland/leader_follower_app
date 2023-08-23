@@ -480,7 +480,7 @@ class CellTypesTab(object):
         box48 = Box(children=row, layout=box_layout)
         name_btn = Button(description='ECM_sensitivity', disabled=True, layout=name_button_layout)
         name_btn.style.button_color = 'tan'
-        self.float46 = FloatText(value='1.0', step='0.1', style=style, layout=widget_layout)
+        self.float46 = FloatText(value='0.0', step='0.01', style=style, layout=widget_layout)
         units_btn = Button(description='dimensionless', disabled=True, layout=name_button_layout)
         units_btn.style.button_color = 'tan'
         description_btn = Button(description='', disabled=True, layout=desc_button_layout)
@@ -573,7 +573,7 @@ class CellTypesTab(object):
         self.float55 = FloatText(value='1.0', step='0.1', style=style, layout=widget_layout)
         units_btn = Button(description='', disabled=True, layout=name_button_layout)
         units_btn.style.button_color = 'lightgreen'
-        description_btn = Button(description='Don not mess with this.', disabled=True, layout=desc_button_layout)
+        description_btn = Button(description='Do not mess with this.', disabled=True, layout=desc_button_layout)
         description_btn.style.button_color = 'lightgreen'
         row = [name_btn, self.float55, units_btn, description_btn] 
 
@@ -1110,7 +1110,7 @@ class CellTypesTab(object):
         box115 = Box(children=row, layout=box_layout)
         name_btn = Button(description='link_anisotropy_and_bias', disabled=True, layout=name_button_layout)
         name_btn.style.button_color = 'lightgreen'
-        self.float110 = FloatText(value='1.0', step='0.1', style=style, layout=widget_layout)
+        self.float110 = FloatText(value='0.0', step='0.01', style=style, layout=widget_layout)
         units_btn = Button(description='dimensionless', disabled=True, layout=name_button_layout)
         units_btn.style.button_color = 'lightgreen'
         description_btn = Button(description='Selects if chemotaxtic bias on followers is coupled exactly to ECM anisotropy or not: 1 = not coupled; 0 = coupled', disabled=True, layout=desc_button_layout)
